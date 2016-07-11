@@ -9,13 +9,13 @@ interval = setInterval(function () { //#C
   led.write(value, function() { //#E
     console.log("Changed LED state to: " + value);
   });
-}, 2000);
+}, 500);
 
 process.on('SIGINT', function () { //#F
   clearInterval(interval);
   led.writeSync(0); //#G
   led.unexport();
-  console.log('Bye, bye!');
+  console.log('User cancelled process CTRL-C');
   process.exit();
 });
 
